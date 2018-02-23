@@ -5,7 +5,8 @@ void createList(List &L) {
     * FS : first(L) dan last(L) diset Nil
     */
     //-------------your code here-------------
-
+    first(L)=NULL;
+    last(L)=NULL;
     //----------------------------------------
 }
 
@@ -17,7 +18,8 @@ address allocate(infotype x) {
 
     address P = NULL;
     //-------------your code here-------------
-
+    info(P)=x;
+    next(P)=NULL;
     //----------------------------------------
     return P;
 }
@@ -27,7 +29,7 @@ void deallocate(address &P) {
     * FS : menghapus elemen yang ditunjuk oleh P (delete)
     */
     //-------------your code here-------------
-
+    delete P;
     //----------------------------------------
 }
 
@@ -37,7 +39,21 @@ void insertFirst(List &L, address P) {
     * FS : elemen yang ditunjuk P menjadi elemen pertama pada List L
     */
     //-------------your code here-------------
-
+    if (first(L)==NULL)
+    {
+        first(L)=P;
+        last(L)=P;
+        next(P)=P;
+        prev(P)=P;
+    }
+    else
+    {
+        next(P)=first(L);
+        prev(P)=last(L);
+        next(last(L))=P;
+        prev(first(L))=P;
+        first(L)=P;
+    }
     //----------------------------------------
 }
 
@@ -47,7 +63,21 @@ void insertLast(List &L, address P) {
     * FS : elemen yang ditunjuk P menjadi elemen terakhir pada List L
     */
     //-------------your code here-------------
-
+        if (first(L)==NULL)
+    {
+        first(L)=P;
+        last(L)=P;
+        next(P)=P;
+        prev(P)=P;
+    }
+    else
+    {
+        next(P)=first(L);
+        prev(P)=last(L);
+        next(last(L))=P;
+        prev(first(L))=P;
+        last(L)=P;
+    }
     //----------------------------------------
 }
 
@@ -60,7 +90,10 @@ address findElmByID(List L, infotype x) {
 
     address P = NULL;
     //-------------your code here-------------
-
+    if (first(L)==NULL)
+    {
+        cout<<"Tidak ditemukan";
+    }
     //----------------------------------------
     return P;
 }
