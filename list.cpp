@@ -20,6 +20,7 @@ address allocate(infotype x) {
     //-------------your code here-------------
     info(P)=x;
     next(P)=NULL;
+    prev(P)=NULL;
     //----------------------------------------
     return P;
 }

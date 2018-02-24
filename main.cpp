@@ -11,8 +11,8 @@ void menu();
 void displayMenu();
 void runMenu(int menu);
 
-int main() {
-
+int main (){
+    menu();
     index_ID = 1;
     createList(L);
 
@@ -40,7 +40,7 @@ int main() {
     //-----------------------------------------
     // memanggil menu utama
     //-----------------------------------------
-    menu();
+
 
 
     return 0;
