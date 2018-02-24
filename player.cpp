@@ -40,8 +40,18 @@ void shuffleList(List &L) {
     * FS : isi (elemen) dari list teracak
     */
     //-------------your code here-------------
+        address P;
+        address Q;
+        int x;
+        P=first(L);
+        x=randomInt(15);
+        for(int i=1;i<=x;i++)
+        {
+                P=next(P);
+        }
+        deleteAfter(L,P,Q);
+        insertFirst(L,Q);
 
-        cout<<"UNDER MAIN TENIS"<<endl;
 
     //----------------------------------------
 }
@@ -52,8 +62,34 @@ void sortListByID(List &L) {
     * FS : isi (elemen) dari list L terurut
     */
     //-------------your code here-------------
-
-        cout<<"UNDER MAIN TENIS"<<endl;
+    List L2;
+    address P;
+    address Q;
+    while (first(L)!=NULL)
+    {
+        P=first(L);
+        deleteFirst(L,P);
+        if (first(L2)==NULL)
+        {
+            insertFirst(L2,P);
+        }
+        else if (info(P).ID<info(first(L2)).ID)
+        {
+            insertFirst(L2,P);
+        }
+        else if (info(P).ID>info(last(L2)).ID)
+        {
+            insertLast(L2,P);
+        }
+        else
+            Q=first(L2);
+            while (info(Q).ID<info(P).ID)
+            {
+                Q=next(Q);
+            }
+            insertAfter(L2,Q,P);
+    }
+    L=L2;
 
     //----------------------------------------
 
@@ -66,7 +102,17 @@ void playRepeat(List &L, int n) {
     */
     //-------------your code here-------------
 
-        cout<<"UNDER MAIN TENIS"<<endl;
+        for (int i=1;i<=n;i++)
+        {
+            address P;
+            P=first(L);
+            do
+            {
+                playMusic(P);
+            }
+            while(P!=first(L));
+        }
+
 
     //----------------------------------------
 }
@@ -79,9 +125,18 @@ void deleteMusicByID(List &L, infotype x) {
     * FS : elemen dengan ID yang dicari dideallocate
     */
     //-------------your code here-------------
-
-        cout<<"UNDER MAIN TENIS"<<endl;
-
+    if (first(L)!=NULL)
+    {
+        address P;
+        address Q;
+        P=findElmByID(L,x);
+        if(P!=NULL)
+        {
+            Q=prev(P);
+            deleteAfter(L,Q,P);
+            deallocate(P);
+        }
+    }
     //----------------------------------------
 
 }
